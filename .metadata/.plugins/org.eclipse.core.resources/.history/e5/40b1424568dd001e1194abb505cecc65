@@ -1,0 +1,9 @@
+/*
+ * @(#) MyInject.java
+ *
+ */
+package pkg4.copy2;
+
+public @interface MyInject {
+
+}

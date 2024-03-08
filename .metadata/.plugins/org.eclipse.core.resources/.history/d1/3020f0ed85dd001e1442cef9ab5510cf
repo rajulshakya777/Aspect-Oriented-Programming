@@ -1,0 +1,24 @@
+package pkg5;
+
+
+public aspect TraceAspect_Shakywar {
+   pointcut classToTrace(): within(TwoDShape) || within(Circle) || within(Square);
+
+   pointcut constructorToTrace(): classToTrace() && execution(new(..));
+
+   pointcut methodToTrace():  classToTrace() &&  execution(* *(..));
+
+   before(): methodToTrace() {
+      System.out.println("\t-->" + thisJoinPointStaticPart.getSignature() + //
+            ", kind: " + thisJoinPointStaticPart.getKind() + //
+            ", loc: " + thisJoinPointStaticPart.getSourceLocation().getFileName() + ", " + //
+            thisJoinPointStaticPart.getSourceLocation().getWithinType() + ", " + //
+            thisJoinPointStaticPart.getSourceLocation().getLine());
+   }
+
+   after(): methodToTrace() {
+      System.out.println("\t<--" + thisJoinPointStaticPart.getSignature());
+   }
+}
+
+*/
